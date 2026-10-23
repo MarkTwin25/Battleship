@@ -47,20 +47,20 @@ export class GameBoard {
     #checkIfItsPossiblePlaceAShip(row, column, length, direction) {
         if (direction === 'horizontal') {
             for (let i = 0; i < length; i++) {
-                if (
-                    row >= this.board.length ||
-                    this.board[row][column] !== null
-                ) {
+                if (column >= 10) {
+                    return false;
+                }
+                if (this.board[row][column] !== null) {
                     return false;
                 }
                 column++;
             }
         } else if (direction === 'vertical') {
             for (let i = 0; i < length; i++) {
-                if (
-                    column >= this.board.length ||
-                    this.board[row][column] !== null
-                ) {
+                if (row >= 10) {
+                    return false;
+                }
+                if (this.board[row][column] !== null) {
                     return false;
                 }
                 row++;

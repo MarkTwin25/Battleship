@@ -6,7 +6,7 @@ export class Player {
     }
 
     attack(x, y, enemyBoard) {
-        enemyBoard.receiveAttack(x, y);
+        return enemyBoard.receiveAttack(x, y);
     }
 
     attackRandom(enemyBoard) {
