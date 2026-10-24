@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-background-color: #1d2d44;
+    --secondary-color: #f0ebd8;
+    --third-color: #7678ed;
+    --cell-color: #748cab;
+}
+
+body {
+    font-family: 'Courier Prime', Arial, Helvetica, sans-serif;
+    background-color: var(--main-background-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: var(--secondary-color);
+}
+
+header .header-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-btns button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--third-color);
+    color: white;
+    font-size: 1rem;
+}
+
+.header-btns button:hover {
+    cursor: pointer;
+    background-color: #6a6cd0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+main .board {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(10, minmax(30px, 40px));
+    justify-content: center;
+    align-content: center;
+    gap: 3px;
+}
+
+main .human-board {
+}
+
+main .computer-board {
+}
+
+main .computer-board:hover {
+    cursor:
+        url('./media/crosshair.svg') 12 12,
+        pointer;
+}
+.cell {
+    background-color: var(--cell-color);
+    aspect-ratio: 1 / 1;
+    border-radius: 3px;
+}
+
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+footer {
+    background-color: var(--third-color);
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+    color: var(--secondary-color);
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
