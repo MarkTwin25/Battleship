@@ -1,13 +1,15 @@
+import { GameBoard } from './Gameboard.js';
 import { Player } from './Player.js';
 
 export class Game {
     constructor() {
-        this.human = new Player();
-        this.computer = new Player();
+        this.human = new Player('Player');
+        this.computer = new Player('Computer');
         this.currentTurn = this.human;
         this.#placeRandomShips(this.human);
         this.#placeRandomShips(this.computer);
         this.winner = null;
+        this.isGameStarted = false;
     }
 
     #placeRandomShips(player) {
@@ -30,22 +32,32 @@ export class Game {
         }
     }
 
+    replaceRandomShips() {
+        if (this.isGameStarted) return false;
+        this.human.gameBoard = new GameBoard();
+        this.#placeRandomShips(this.human);
+        return true;
+    }
+
     playRound(x, y) {
-        if (this.winner) return;
+        if (this.winner) return false;
 
         const isValidAttack = this.human.attack(x, y, this.computer.gameBoard);
-        if (!isValidAttack) return;
+        this.isGameStarted = true;
+
+        if (!isValidAttack) return false;
 
         if (this.checkWinner()) {
             this.winner = this.human;
-            return;
         }
-
-        this.computer.attackRandom(this.human.gameBoard);
+        return true;
+    }
+    computerRound() {
+        if (this.winner) return false;
+        this.computer.smartAttack(this.human.gameBoard);
 
         if (this.checkWinner()) {
             this.winner = this.computer;
-            return;
         }
     }
 
