@@ -4,6 +4,7 @@ export class GameBoard {
     constructor() {
         this.board = this.#createBoard();
         this.missedAttacks = new Set();
+        this.hitAttacks = new Set();
         this.ships = [];
     }
 
@@ -78,6 +79,7 @@ export class GameBoard {
             this.board[x][y] = 'miss';
         } else if (typeof cellAttacked === 'object') {
             this.board[x][y].hit();
+            this.hitAttacks.add(`${x},${y}`);
         } else {
             return false;
         }
