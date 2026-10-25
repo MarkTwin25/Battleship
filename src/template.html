@@ -12,19 +12,22 @@
     <header>
         <h1 class="title">Battleship</h1>
         <div class="header-btns">
-            <button class="randomize-btn">Randomize Ships</button>
-            <button class="start-game">Start Game</button>
+            <button class="randomize-btn" id="randomize-btn">Randomize Ships</button>
+            <button class="start-game" id="start-game">Start Game</button>
         </div>
     </header>
 
     <main>
-        <div class="board human-board" id="human-board">
+        <div class="player-section">
+            <h2 class="player-name">You</h2>
+            <div class="board human-board" id="human-board">
+            </div>
         </div>
-
-        <div class="board computer-board" id="computer-board">
-            <!-- <h1>Computer</h1> -->
+        <div class="player-section">
+            <h2 class="player-name">Computer</h2>
+            <div class="board computer-board" id="computer-board">
+            </div>
         </div>
-
     </main>
 
     <footer>
@@ -34,5 +37,18 @@
             </a>
         </p>
     </footer>
+
+    <section class="winner hidden" id="winner">
+        <div class="winner-container">
+            <div class="top-section">
+                <h1 class="game-over">Game Over</h1>
+            </div>
+            <div class="bottom-section">
+                <p class="winner-player" id="winner-player">You won!</p>
+                <button class="play-again" id="play-again">Play Again?</button>
+            </div>
+
+        </div>
+    </section>
 </body>
 </html>
